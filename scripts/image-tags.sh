@@ -7,7 +7,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
 function generate_tags {
 	hub="goreleaser/$1"
-	ghcr=ghcr.io/$hub
+	ghcr=xaxy/$hub
 
 	tag=$(make tag)
 	GORELEASER_VERSION=v$GORELEASER_VERSION
