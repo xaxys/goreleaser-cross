@@ -7,7 +7,6 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
 function generate_tags {
 	hub="xaxy/$1"
-	ghcr=ghcr.io/$hub
 
 	tag=$(make tag)
 	GORELEASER_VERSION=v$GORELEASER_VERSION
@@ -17,19 +16,12 @@ function generate_tags {
 	if [[ $("${SCRIPT_DIR}"/is_prerelease.sh "$tag") == true ]]; then
 		echo "$hub:$tag.$GORELEASER_VERSION"
 		echo "$hub:$tag"
-		echo "$ghcr:$tag.$GORELEASER_VERSION"
-		echo "$ghcr:$tag"
 	else
 		echo "$hub:latest"
 		echo "$hub:$tag-$GORELEASER_VERSION"
 		echo "$hub:$tag_minor-$GORELEASER_VERSION"
 		echo "$hub:$tag_minor"
 		echo "$hub:$tag"
-		echo "$ghcr:latest"
-		echo "$ghcr:$tag-$GORELEASER_VERSION"
-		echo "$ghcr:$tag_minor-$GORELEASER_VERSION"
-		echo "$ghcr:$tag_minor"
-		echo "$ghcr:$tag"
 	fi
 
 	exit 0
