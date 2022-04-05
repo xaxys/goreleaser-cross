@@ -1,7 +1,7 @@
 # golang parameters
 ARG GO_VERSION
 
-FROM xaxy/goreleaser-cross-base AS osx-cross-base
+FROM xaxy/goreleaser-cross-base:v${GO_VERSION} AS osx-cross-base
 ENV OSX_CROSS_PATH=/osxcross
 ARG DEBIAN_FRONTEND=noninteractive
 
